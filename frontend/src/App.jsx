@@ -1,29 +1,30 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import UploadBox from "./components/UploadBox";
-import CTPreview from "./components/CTPreview";
-import ResultCard from "./components/ResultCard";
-import ChatWindow from "./components/ChatWindow";
+import Footer from "./components/Footer";
+import HomePage from "./pages/Home";
+import ScanPage from "./pages/Scan";
+import ResultsPage from "./pages/Results";
+import ChatPage from "./pages/Chat";
+import ReportsPage from "./pages/Reports";
+import AboutPage from "./pages/About";
+import "./styles/animations.css";
 
 function App() {
-  const [image, setImage] = useState(null);
-
   return (
-    <>
+    <Router>
       <Navbar />
-
-      <div style={{ display: "flex", gap: "20px", padding: "20px" }}>
-        <div style={{ flex: 1 }}>
-          <UploadBox onImageUpload={setImage} />
-          <CTPreview image={image} />
-          <ResultCard />
-        </div>
-
-        <div style={{ flex: 1 }}>
-          <ChatWindow />
-        </div>
-      </div>
-    </>
+      <main style={{ flex: 1 }}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/scan" element={<ScanPage />} />
+          <Route path="/results" element={<ResultsPage />} />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </Router>
   );
 }
 

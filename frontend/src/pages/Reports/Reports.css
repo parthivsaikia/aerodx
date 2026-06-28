@@ -1,0 +1,184 @@
+.reports-header { text-align: center; margin-bottom: 40px; }
+.reports-header h1 { font-size: 2rem; margin-bottom: 8px; }
+.reports-header p { color: var(--text-light); }
+
+.reports-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Report Form */
+.report-form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.report-form-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.form-desc { color: var(--text-light); font-size: 0.9rem; margin-bottom: 24px; }
+
+.form-group { margin-bottom: 16px; }
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text-heading);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  background: var(--bg);
+  color: var(--text);
+  transition: all 0.3s ease;
+  font-family: var(--font);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+}
+
+.generate-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.generate-btn:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.generate-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.success-message {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid var(--success);
+  border-radius: var(--radius-sm);
+  color: var(--success);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  animation: successPop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes successPop {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Previous Reports */
+.previous-reports-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.previous-reports-card h3 { font-size: 1.2rem; margin-bottom: 20px; }
+
+.reports-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.report-item {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  animation: listItemIn 0.4s ease backwards;
+}
+
+@keyframes listItemIn {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.report-item:hover {
+  border-color: var(--primary-light);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.report-info { display: flex; flex-direction: column; gap: 4px; }
+.report-disease { font-weight: 600; font-size: 0.95rem; }
+.report-date { font-size: 0.8rem; color: var(--text-light); }
+.report-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.report-confidence { font-size: 0.8rem; color: var(--text-light); }
+
+.download-btn {
+  padding: 6px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--text);
+  transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+  border-color: var(--primary-light);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reports-layout { grid-template-columns: 1fr; }
+  .report-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .report-meta { align-items: flex-start; flex-direction: row; gap: 12px; }
+}
